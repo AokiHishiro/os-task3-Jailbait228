@@ -80,6 +80,7 @@ DWORD WINAPI ThreadProc_d(LPVOID)
         std::cout << "d";
         computation();
     }
+    WaitForMultipleObjects(3, aThread, TRUE, INFINITE);
     WaitForSingleObject(aThread[2], INFINITE);
     WaitForSingleObject(aThread[4], INFINITE);
     WaitForSingleObject(aThread[5], INFINITE);
