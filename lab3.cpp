@@ -3,6 +3,7 @@
 #include <stdio.h>
 #define MAX_SEM_COUNT 10
 #define THREADCOUNT 12
+HANDLE mutex;
 HANDLE ghSemaphoreA, ghSemaphoreB, ghSemaphoreD, ghSemaphoreG, ghSemaphoreK, ghSemaphoreM, ghSemaphoreH,ghSemaphoreI;
 HANDLE aThread[THREADCOUNT];
 DWORD WINAPI ThreadProc_c(LPVOID);
@@ -67,8 +68,10 @@ DWORD WINAPI ThreadProc_c(LPVOID)
     WaitForSingleObject(aThread[1], INFINITE);
     for (int i = 0; i < 3; i++)
     {
+        WaitForSingleObject(mutex, INFINITE);
         std::cout << "c";
         computation();
+        ReleaseMutex(mutex);
     }
     return TRUE;
     
@@ -77,7 +80,9 @@ DWORD WINAPI ThreadProc_d(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
+        WaitForSingleObject(mutex, INFINITE);
         std::cout << "d";
+        ReleaseMutex(mutex);
         computation();
     }
     WaitForMultipleObjects(3, aThread, TRUE, INFINITE);
@@ -99,8 +104,10 @@ DWORD WINAPI ThreadProc_e(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
+        WaitForSingleObject(mutex, INFINITE);
         std::cout << "e";
         computation();
+        ReleaseMutex(mutex);
     }
     return TRUE;
 
@@ -109,8 +116,10 @@ DWORD WINAPI ThreadProc_f(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
+        WaitForSingleObject(mutex, INFINITE);
         std::cout << "f";
         computation();
+        ReleaseMutex(mutex);
     }
     return TRUE;
 
@@ -202,6 +211,7 @@ DWORD WINAPI ThreadProc_n(LPVOID)
 }
 int lab3_init()
 {
+    mutex = CreateMutex(NULL, FALSE, NULL);
     DWORD ThreadID;
     ghSemaphoreA = CreateSemaphore(NULL,0,1,NULL);
     if (ghSemaphoreA == NULL)
