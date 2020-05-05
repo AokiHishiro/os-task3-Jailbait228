@@ -35,7 +35,7 @@ DWORD WINAPI ThreadProc_a(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
-        printf("a");
+        std::cout << "a";
     }
     return TRUE;
 }
@@ -44,7 +44,7 @@ DWORD WINAPI ThreadProc_b(LPVOID)
     for (int i = 0; i < 3; i++)
     {
             WaitForSingleObject(ghSemaphoreA, INFINITE);
-                printf("b");
+            std::cout << "b";
                 computation();
                 if (!ReleaseSemaphore(ghSemaphoreB,  1,  NULL))      
                 {
@@ -58,7 +58,7 @@ DWORD WINAPI ThreadProc_c(LPVOID)
     for (int i = 0; i < 3; i++)
     {
              WaitForSingleObject(ghSemaphoreB, INFINITE);
-                printf("c");
+             std::cout << "c";
                 computation();
                 if (!ReleaseSemaphore(ghSemaphoreA,1, NULL)) 
                     printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -67,7 +67,7 @@ DWORD WINAPI ThreadProc_c(LPVOID)
     WaitForSingleObject(aThread[1], INFINITE);
     for (int i = 0; i < 3; i++)
     {
-        printf("c");
+        std::cout << "c";
         computation();
     }
     return TRUE;
@@ -77,7 +77,7 @@ DWORD WINAPI ThreadProc_d(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
-        printf("d");
+        std::cout << "d";
         computation();
     }
     WaitForSingleObject(aThread[2], INFINITE);
@@ -86,8 +86,8 @@ DWORD WINAPI ThreadProc_d(LPVOID)
    for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreD, INFINITE);
+        std::cout << "d";
         computation();
-        Sleep(5);
         if (!ReleaseSemaphore(ghSemaphoreG, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
     }
@@ -98,7 +98,7 @@ DWORD WINAPI ThreadProc_e(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
-        printf("e");
+        std::cout << "e";
         computation();
     }
     return TRUE;
@@ -108,7 +108,7 @@ DWORD WINAPI ThreadProc_f(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
-        printf("f");
+        std::cout << "f";
         computation();
     }
     return TRUE;
@@ -119,7 +119,7 @@ DWORD WINAPI ThreadProc_g(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreG, INFINITE);
-        printf("g");
+        std::cout << "g";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreH, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -131,7 +131,7 @@ DWORD WINAPI ThreadProc_h(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreH, INFINITE);
-        printf("h");
+        std::cout << "h";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreM, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -139,7 +139,7 @@ DWORD WINAPI ThreadProc_h(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreH, INFINITE);
-        printf("h");
+        std::cout << "h";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreM, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -151,7 +151,7 @@ DWORD WINAPI ThreadProc_m(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreM, INFINITE);
-        printf("m");
+        std::cout << "m";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreK, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -159,7 +159,7 @@ DWORD WINAPI ThreadProc_m(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreM, INFINITE);
-        printf("m");
+        std::cout << "m";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreI, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -171,7 +171,7 @@ DWORD WINAPI ThreadProc_k(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreK, INFINITE);
-        printf("k");
+        std::cout << "k";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreD, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
@@ -183,7 +183,7 @@ DWORD WINAPI ThreadProc_i(LPVOID)
     for (int i = 0; i < 3; i++)
     {
         WaitForSingleObject(ghSemaphoreI, INFINITE);
-        printf("i");
+        std::cout << "i";
         computation();
         if (!ReleaseSemaphore(ghSemaphoreH, 1, NULL))
             printf("ReleaseSemaphore error: %d\n", GetLastError());
