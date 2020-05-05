@@ -122,7 +122,6 @@ DWORD WINAPI ThreadProc_f(LPVOID)
         ReleaseMutex(mutex);
     }
     return TRUE;
-
 }
 DWORD WINAPI ThreadProc_g(LPVOID)
 {
