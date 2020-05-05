@@ -194,7 +194,7 @@ DWORD WINAPI ThreadProc_n(LPVOID)
 {
     for (int i = 0; i < 3; i++)
     {
-        printf("n");
+        std::cout<<"n";
         computation();
     }
     return TRUE;
