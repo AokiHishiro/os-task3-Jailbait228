@@ -4,8 +4,7 @@
 #define MAX_SEM_COUNT 10
 #define THREADCOUNT 12
 HANDLE ghSemaphoreA, ghSemaphoreB, ghSemaphoreD, ghSemaphoreG, ghSemaphoreK, ghSemaphoreM, ghSemaphoreH,ghSemaphoreI;
-
-    HANDLE aThread[THREADCOUNT];
+HANDLE aThread[THREADCOUNT];
 DWORD WINAPI ThreadProc_a(LPVOID);
 DWORD WINAPI ThreadProc_ñ(LPVOID);
 DWORD WINAPI ThreadProc_b(LPVOID);
