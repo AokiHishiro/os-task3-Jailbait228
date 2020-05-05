@@ -289,9 +289,10 @@ int lab3_init()
             printf("CreateThread error: %d\n", GetLastError());
             return 1;
         }
-        WaitForSingleObject(aThread[2], INFINITE);
+        WaitForMultipleObjects(3, aThread, TRUE, INFINITE);
         WaitForSingleObject(aThread[4], INFINITE);
         WaitForSingleObject(aThread[5], INFINITE);
+        WaitForSingleObject(aThread[2], INFINITE);
         aThread[9] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ThreadProc_m, NULL, 0, &ThreadID);
         if (aThread[9] == NULL)
         {
@@ -336,7 +337,7 @@ int lab3_init()
         }
        
         WaitForSingleObject(aThread[11], INFINITE);
-        WaitForMultipleObjects(5, aThread, TRUE, INFINITE);
+        WaitForMultipleObjects(12, aThread, TRUE, INFINITE);
         for (int i = 0; i < THREADCOUNT; i++)
             CloseHandle(aThread[i]);
     CloseHandle(ghSemaphoreA);
