@@ -5,7 +5,7 @@
 #define THREADCOUNT 12
 HANDLE ghSemaphoreA, ghSemaphoreB, ghSemaphoreD, ghSemaphoreG, ghSemaphoreK, ghSemaphoreM, ghSemaphoreH,ghSemaphoreI;
 HANDLE aThread[THREADCOUNT];
-DWORD WINAPI ThreadProc_ñ(LPVOID);
+DWORD WINAPI ThreadProc_c(LPVOID);
 DWORD WINAPI ThreadProc_a(LPVOID);
 DWORD WINAPI ThreadProc_b(LPVOID);
 DWORD WINAPI ThreadProc_d(LPVOID);
@@ -334,10 +334,12 @@ int lab3_init()
             printf("CreateThread error: %d\n", GetLastError());
             return 1;
         }
+       
         WaitForSingleObject(aThread[11], INFINITE);
         WaitForMultipleObjects(5, aThread, TRUE, INFINITE);
         for (int i = 0; i < THREADCOUNT; i++)
             CloseHandle(aThread[i]);
+        printf("\n");
     CloseHandle(ghSemaphoreA);
     CloseHandle(ghSemaphoreB);
     CloseHandle(ghSemaphoreD);
